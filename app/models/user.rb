@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :roles
 
+  def manager?
+    self.roles.pluck(:name).include?('manager')
+  end
+
+  def customer?
+    self.roles.pluck(:name).include?('customer')
+  end
+
 end

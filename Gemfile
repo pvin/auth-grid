@@ -59,3 +59,6 @@ gem 'cancancan'
 gem 'draper'
 
 gem 'bootstrap-sass', '~> 3.3.7'
+
+
+# gem 'rolify'
