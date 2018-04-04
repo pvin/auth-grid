@@ -1,0 +1,107 @@
+<div class="table-responsive">
+  <table class="table">
+
+    <h4>Auth Grid</h4>
+
+    <% @role = Role.find(params[:id]) %>
+    <h5>Setting Access for <%= @role.name  %></h5>
+
+
+    <thead>
+    <tr>
+    <th></th>
+    <% prepare_hash %>
+    <% @access_order = Access.all.order("id ASC")%>
+    <% @access_order.each do |access|%>
+        <th><%= access.name %></th>
+    <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    <% access = @access_order.all.pluck(:id) %>
+    
+    <% Element.all.each do |e| %>
+
+
+        <tr class="rollDiv" >
+
+          <input type="hidden" name="role_id" class= 'role_id' value= <%= @role.id %> >
+
+          <th>
+            <%= e.name %>
+          </th>
+          
+          <td>
+            <label class="checkbox checkbox-inline">
+             <input type="checkbox"  <%= 'checked' if (@hash >= { access[0] => e.id }) %>  value= '<%= access[0] %> : <%= e.id  %>' >
+            </label>
+          </td>
+
+          <td>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox"  <%= 'checked' if (@hash >= { access[1] => e.id }) %>  value= '<%= access[1] %> : <%= e.id  %>' >
+            </label>
+          </td>
+
+          <td>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox"  <%= 'checked' if (@hash >= { access[2] => e.id}) %>  value= '<%= access[2] %> : <%= e.id  %>' >
+            </label>
+          </td>
+
+          <td>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox"  <%= 'checked' if (@hash >= { access[3] => e.id}) %>  value= '<%= access[3] %> : <%= e.id  %>' >
+            </label>
+          </td>
+
+          <td>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox"  <%= 'checked' if (@hash >= {  access[4] => e.id }) %> value= '<%= access[4] %> : <%= e.id  %>' >
+            </label>
+          </td>
+        </tr>
+
+
+    <% end %>
+    </table>
+</div>
+
+<script>
+    $('document').ready(function() {
+        $(':checkbox').on('change', function() {
+            var $this = $(this);
+            var ids = $this.val();
+            var id_array = ids.split(':');
+            var element_id = id_array[1];
+            var access_id = id_array[0];
+            var role_id = $('.role_id').val();
+            var url;
+            if (this.checked) {
+                url = '/add_access'
+            }else {
+                url = '/remove_access'
+            }
+            $.ajax({
+                url : url,
+                type : 'POST',
+                dataType:'json',
+                data : {
+                    access_role: {
+                        role_id: role_id,
+                        element_id: element_id,
+                        access_id: access_id
+                    }
+                },
+                success : function(data) {
+                    alert('Updated Successfully');
+                },
+                error : function(request,error)
+                {
+                    alert("Something went wrong");
+                }
+            });
+        });
+    });
+
+</script>

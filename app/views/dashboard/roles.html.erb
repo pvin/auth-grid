@@ -1,0 +1,7 @@
+<h2>Choose Role for setting up the privileges </h2>
+
+<ul class="list-group">
+  <%Role.all.each do |role|%>
+      <li class="list-group-item"><%= link_to role.name, "access/#{role.id}" %></li>
+  <% end %>
+</ul>

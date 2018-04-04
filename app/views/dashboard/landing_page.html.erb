@@ -1,53 +1,5 @@
-<div class="table-responsive">
-  <table class="table">
-    <h2><%#= current_user.email %></h2>
-    <h4>Auth Grid</h4>
-    <thead>
-    <tr>
-      <th></th>
-      <th>Create</th>
-      <th>Update</th>
-      <th>Edit</th>
-      <th>Delete</th>
-      <th>Manage</th>
-    </tr>
-    </thead>
-    <tbody>
+<h1>Auth Grid</h1>
 
-    <% Element.all.each do |e| %>
 
-    <tr>
-      <th>
-          <%= e.name %>
-      </th>
-      <td>
-        <label class="checkbox checkbox-inline">
-          <input type="checkbox">
-        </label>
-      </td>
-      <td>
-        <label class="checkbox checkbox-inline">
-          <input type="checkbox">
-        </label>
-      </td>
-      <td>
-        <label class="checkbox checkbox-inline">
-          <input type="checkbox">
-        </label>
-      </td>
-      <td>
-        <label class="checkbox checkbox-inline">
-          <input type="checkbox">
-        </label>
-      </td>
-      <td>
-        <label class="checkbox checkbox-inline">
-          <input type="checkbox">
-        </label>
-      </td>
-    </tr>
 
-    <% end %>
-  </table>
-</div>
-<!-- /.table-responsive -->
+<%= link_to "privileges", '/roles' %>

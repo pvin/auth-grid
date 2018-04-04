@@ -17,4 +17,11 @@ module ApplicationHelper
     nil
   end
 
+  def prepare_hash
+    @hash = {}
+    @access.each do |ac|
+      @hash[ac.access_id] = ac.element_id
+    end
+  end
+
 end

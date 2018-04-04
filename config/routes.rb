@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   resources :users
 
   root to: 'dashboard#landing_page'
+
+  get 'roles' => 'dashboard#roles'
+
+  get 'access/:id' => 'dashboard#access'
+
+  post 'add_access' => 'access_roles#add_access'
+
+  post 'remove_access' => 'access_roles#remove_access'
 end
