@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :offers
   resources :products
   # devise_for :users, ActiveAdmin::Devise.config
   # ActiveAdmin.routes(self)
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
+  resources :offers
 
   root to: 'dashboard#landing_page'
 

@@ -2,29 +2,25 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     user ||= User.new
     access user
-    if user.manager?
-      can @role_arr, @elemt#, user_id: user.id
-    elsif user.customer?
-      can @role_arr, @elemt
+    @power.each do |k,v|
+      can v, k
     end
-
   end
 
   def access user
-    @role_arr = []
-    @elemt = []
+    @power = Hash.new
     user.roles.each do |role|
-      @role_arr.push(role.accesses.pluck(:name))
-      @elemt.push((Element.find role.access_roles.pluck(:element_id)).map(&:name))
+      role.access_roles.each do |ac|
+        @power[Object.const_get(element_name(ac.element_id))] = Access.find(AccessRole.where(role_id:role.id, element_id:ac.element_id).pluck(:access_id)).pluck(:name).flatten.collect {|r| r.to_sym }
+      end
     end
-    @role_arr = @role_arr.flatten.collect {|r| r.to_sym }
-    @elemt = @elemt.flatten.collect{|e| Object.const_get e}
-
   end
 
+  def element_name id
+    Element.find(id).name
+  end
 
 end
 

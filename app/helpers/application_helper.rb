@@ -20,7 +20,11 @@ module ApplicationHelper
   def prepare_hash
     @hash = {}
     @access.each do |ac|
-      @hash[ac.access_id] = ac.element_id
+      if @hash[ac.element_id].present?
+        @hash[ac.element_id] << ac.access_id
+      else
+        @hash[ac.element_id] =  [ac.access_id]
+      end
     end
   end
 

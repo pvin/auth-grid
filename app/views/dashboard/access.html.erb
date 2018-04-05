@@ -1,7 +1,6 @@
 <div class="table-responsive">
   <table class="table">
 
-    <h4>Auth Grid</h4>
 
     <% @role = Role.find(params[:id]) %>
     <h5>Setting Access for <%= @role.name  %></h5>
@@ -30,39 +29,37 @@
           <th>
             <%= e.name %>
           </th>
-          
+
           <td>
             <label class="checkbox checkbox-inline">
-             <input type="checkbox"  <%= 'checked' if (@hash >= { access[0] => e.id }) %>  value= '<%= access[0] %> : <%= e.id  %>' >
+             <input type="checkbox"  <%= 'checked' if (@hash[e.id].present? && @hash[e.id].include?(access[0])) %>  value= '<%= access[0] %> : <%= e.id  %>' >
             </label>
           </td>
 
           <td>
             <label class="checkbox checkbox-inline">
-              <input type="checkbox"  <%= 'checked' if (@hash >= { access[1] => e.id }) %>  value= '<%= access[1] %> : <%= e.id  %>' >
+              <input type="checkbox"  <%= 'checked' if (@hash[e.id].present? && @hash[e.id].include?(access[1])) %>  value= '<%= access[1] %> : <%= e.id  %>' >
             </label>
           </td>
 
           <td>
             <label class="checkbox checkbox-inline">
-              <input type="checkbox"  <%= 'checked' if (@hash >= { access[2] => e.id}) %>  value= '<%= access[2] %> : <%= e.id  %>' >
+              <input type="checkbox"  <%= 'checked' if (@hash[e.id].present? && @hash[e.id].include?(access[2])) %>  value= '<%= access[2] %> : <%= e.id  %>' >
             </label>
           </td>
 
           <td>
             <label class="checkbox checkbox-inline">
-              <input type="checkbox"  <%= 'checked' if (@hash >= { access[3] => e.id}) %>  value= '<%= access[3] %> : <%= e.id  %>' >
+              <input type="checkbox"  <%= 'checked' if (@hash[e.id].present? && @hash[e.id].include?(access[3])) %>  value= '<%= access[3] %> : <%= e.id  %>' >
             </label>
           </td>
 
           <td>
             <label class="checkbox checkbox-inline">
-              <input type="checkbox"  <%= 'checked' if (@hash >= {  access[4] => e.id }) %> value= '<%= access[4] %> : <%= e.id  %>' >
+              <input type="checkbox"  <%= 'checked' if (@hash[e.id].present? && @hash[e.id].include?(access[4])) %> value= '<%= access[4] %> : <%= e.id  %>' >
             </label>
           </td>
         </tr>
-
-
     <% end %>
     </table>
 </div>

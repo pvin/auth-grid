@@ -1,0 +1,27 @@
+<h2>Offer List</h2>
+<div class="product-block">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+      <th class="col-md-2">Name</th>
+      <th class="col-md-2">Value</th>
+      <th class="col-md-2">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @offers.each do |offer| %>
+        <tr>
+          <td class="col-md-2"><%= offer.name %></td>
+          <td class="col-md-2">$<%= offer.value %></td>
+          <td class="col-md-4">
+            <%= link_to 'Show', offer_path(offer), class: "btn btn-info" %>
+            <%= link_to 'Edit', edit_offer_path(offer), class: "btn  btn-warning" %>
+            <%= link_to 'Destroy', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<%= link_to 'New Offer', new_offer_path, class: "btn btn-primary" %>
