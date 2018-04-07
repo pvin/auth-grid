@@ -2,14 +2,23 @@
 
 ### Initial setup
 
-1. Find user to set admin as true. Only that user can able to access the Active admin side.
+1. rake db:create
+
+2. rake db:migrate
+
+3. rake db:seed
+
+4. Find user to set admin as true. Only that user can able to access the Active admin side.
 
      **Can be managed form Active admin side as well '/admin'**
 
-2. Next for element, its nothing but the list of Model to be managed, example: creating it for Product model
+5. Next for element, its nothing but the list of Model to be managed, example: creating it for Product model
      **Element.create(name: 'Product')**   
      
-3. Roles can be added from active admin side.
+6. Roles can be added from active admin side.
 
+**privileges -> roles(choose one) -> customer(Setting Access for customer).**
 
-![Customer Grid](/app/assets/images/customer-grid.png?raw=true "Customerrr Grid")
+##### Final should look like (For example role called customer)
+
+![Customer Grid](/app/assets/images/customer-grid.png?raw=true "Customer Grid")
