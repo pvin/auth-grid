@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
 
+  before_action :authenticate_user!
+
   def landing_page
   end
 
