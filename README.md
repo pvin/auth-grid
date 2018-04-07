@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Initial setup
 
-Things you may want to cover:
+* 1. find user to set admin as true. Only that user can able to access the Active admin side.
 
-* Ruby version
+# can be managed form Active admin side as well '/admin'
 
-* System dependencies
+* 2. Next for element, its nothing but the list of Model to be managed
+     example: creating it for Product model
+     Element.create(name: 'Product')
 
-* Configuration
+* 3. Roles can be added from active admin side.
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Customer Grid](https://github.com/pvin/auth-grid/tree/master/app/assets/images/customer-grid.png)
