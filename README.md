@@ -21,4 +21,6 @@
 
 ##### Final should look like (For example role called customer)
 
+https://medium.com/@praaveen/rails-postgres-error-authentication-failed-a87c9543b933
+
 ![Customer Grid](/app/assets/images/customer-grid.png?raw=true "Customer Grid")
